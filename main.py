@@ -22,11 +22,21 @@ def smokingdata():
     print(cldb)
 
 def three(): 
-    cldb[['Total Smokers']]
+    a = cldb['Total Smokers'].sum()
+    print(f"The total amount of people to ever smoke is {a} people")
+
+#need help with this 
 
 def four():
-    int(input(f"Enter a year: "))
+    year_of_choice = input('Choose a year: ')
+    if year_of_choice in cldb.columns:
+        result = cldb[year_of_choice]
+        print(result)
+    else:
+        print(f"The year {year_of_choice} is not a column in the DataFrame.")
 
+
+        
 def five():
         cldb.plot(
             kind='bar',
@@ -37,10 +47,15 @@ def five():
             title='test')
         plt.show()
     
-
-#def 6 
-
-#def 7
+def six():
+        cldb.plot(
+            kind='bar',
+            x='Year',
+            y='Percent of Female',
+            color='red',
+            alpha=0.3,
+            title='test')
+        plt.show()
 
 
 
@@ -55,15 +70,15 @@ def useCases():
 
     Basic Functions:
 
-    1. OG - Show the original dataset
-    2. OZ - Show the updated Data Frame of just Australia
-    3. TOTAL - Show the total amount of Australian smokers from 1980 - 2012 
+    1. Show the original dataset
+    2. Show the updated Data Frame of just Australia
+    3. Show the total amount of Australian smokers from 1980 - 2012 
 
     Advanced Functions:
             
     4. Year:(YYYY) - Show coloumn of information for just that year
     5. Visualise_total - Visualise the total smoking trends between two genders
-    6. Visualise_average - Visualise the average smoking trends between two genders
+    6. W male
             
     7. Quit - Quit Program
           """)
@@ -76,14 +91,14 @@ def useCases():
         elif please == 2:
             smokingdata()
         elif please == 3:
-            print("put your function here")
+            three()
         elif please == 4:
-            print("put your function here")
+            four()
         elif please == 5:
             five()
-        elif please == 5:
-            print("put your function here")
         elif please == 6:
+            six()
+        elif please == 7:
             print("put your function here")
             quit = True
         else:
@@ -93,11 +108,6 @@ def useCases():
     except:
         print("smt")
         
-#example for the integer input f string
-
-        #int(input(f"Enter a number greater than {age}: "))
-
-
 
 #Main Program
 
