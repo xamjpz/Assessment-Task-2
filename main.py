@@ -1,8 +1,10 @@
  
+#Modules
+
 import pandas as pd
 import matplotlib.pyplot as plt
 
-#Global Variables?
+#Global Variables
 quit = False
 
 #Data Frames for every request
@@ -12,7 +14,6 @@ ogdb = pd.read_csv("smoking_original.csv")
 cldb = pd.read_csv("smoking.csv",
                     header=None,
                     names=['Year','Average Smoked', 'Percent of Male', 'Percent of Female', 'Percent of Total Population', 'Total Smokers', 'Total Males', 'Total Females'])
-
 
 #Important Functions
 def originaldata():
@@ -35,8 +36,6 @@ def four():
     else:
         print(f"The year {year_of_choice} is not a column in the DataFrame.")
 
-
-        
 def five():
         cldb.plot(
             kind='bar',
@@ -57,14 +56,11 @@ def six():
             title='test')
         plt.show()
 
-
-
 def useCases():
     global quit
 
     print("""This UI will tell you almost everything you want to know about the trends of smoking between the eyars 1980 and 2012
           
-    It's interactive so you can get the most out of it as you can.
 
     Choose from the functions on what you'd like to learn about:
 
@@ -99,14 +95,12 @@ def useCases():
         elif please == 6:
             six()
         elif please == 7:
-            print("put your function here")
             quit = True
         else:
-            print("Try again")
+            print("Try again, pick a number between 1-7.")
             
-
     except:
-        print("smt")
+        print("Try entering a number between 1-7 instead of whatever you entered.")
         
 
 #Main Program
