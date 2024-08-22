@@ -16,6 +16,8 @@ cldb = pd.read_csv("smoking.csv",
                     names=['Year','Average Smoked', 'Percent of Male', 'Percent of Female', 'Percent of Total Population', 'Total Smokers', 'Total Males', 'Total Females'])
 
 #Important Functions
+
+#prints the whole original database
 def originaldata():
         ogdb = pd.read_csv('smoking_original.csv', on_bad_lines='warn', encoding='ISO-8859-1' )
         with pd.option_context('display.max_rows', None,
@@ -25,14 +27,16 @@ def originaldata():
                        'display.colheader_justify', 'left'):
            print(ogdb)
 
+#prints the cleaned database
 def smokingdata():
     print(cldb)
 
+#prints the sum of every person to ever smoke
 def three(): 
     a = cldb['Total Smokers'].sum()
     print(f"The total amount of people to ever smoke is {a} people")
 
-
+#prints the column of choice that the user chooses
 def four():
     column_of_choice = input('Choose a column: ')
     if column_of_choice in cldb.columns:
@@ -41,7 +45,7 @@ def four():
     else:
         print(f"The column {column_of_choice} is not a column in the DataFrame.")
 
-
+#prints a comparison of the percent of male smokers from 1980 - 2012
 def five():
         cldb.plot(
             kind='bar',
@@ -52,6 +56,7 @@ def five():
             title='Comparison of Percent of Male Smokers')
         plt.show()
     
+#prints a comparison of the percent of female smokers from 1980 - 2012
 def six():
         cldb.plot(
             kind='bar',
@@ -62,6 +67,7 @@ def six():
             title='Comparison of Percent of Female Smokers')
         plt.show()
 
+#function for the main program. It prints a guide for the user to read to help navigate the UI.
 def useCases():
     global quit
 
