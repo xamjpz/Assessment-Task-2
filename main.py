@@ -11,13 +11,18 @@ quit = False
 
 ogdb = pd.read_csv("smoking_original.csv")
 
+
 cldb = pd.read_csv("smoking.csv",
                     header=None,
                     names=['Year','Average Smoked', 'Percent of Male', 'Percent of Female', 'Percent of Total Population', 'Total Smokers', 'Total Males', 'Total Females'])
 
 #Important Functions
 def originaldata():
-    print(ogdb)
+    with pd.option_context('display.max_rows', None,
+                       'display.max_columns', None,
+                       'display.precision', 3,
+                       ):
+        print(ogdb)
 
 def smokingdata():
     print(cldb)
@@ -26,15 +31,13 @@ def three():
     a = cldb['Total Smokers'].sum()
     print(f"The total amount of people to ever smoke is {a} people")
 
-#need help with this 
-
 def four():
-    year_of_choice = input('Choose a year: ')
-    if year_of_choice in cldb.columns:
-        result = cldb[year_of_choice]
+    column_of_choice = input('Choose a column: ')
+    if column_of_choice in cldb.columns:
+        result = cldb[column_of_choice]
         print(result)
     else:
-        print(f"The year {year_of_choice} is not a column in the DataFrame.")
+        print(f"The column {column_of_choice} is not a column in the DataFrame.")
 
 def five():
         cldb.plot(
@@ -72,9 +75,9 @@ def useCases():
 
     Advanced Functions:
             
-    4. Year:(YYYY) - Show coloumn of information for just that year
-    5. Visualise_total - Visualise the total smoking trends between two genders
-    6. W male
+    4. Choose a column to display the information
+    5. To display the Percent of Male Smokers accross the years
+    6. To display the Percent of Female Smokers accross the years
             
     7. Quit - Quit Program
           """)
@@ -95,6 +98,7 @@ def useCases():
         elif please == 6:
             six()
         elif please == 7:
+            print("Thank you for using my User Interface goodbye :)")
             quit = True
         else:
             print("Try again, pick a number between 1-7.")
