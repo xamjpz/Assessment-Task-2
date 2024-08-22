@@ -17,7 +17,13 @@ cldb = pd.read_csv("smoking.csv",
 
 #Important Functions
 def originaldata():
-    print(ogdb)
+        ogdb = pd.read_csv('smoking_original.csv', on_bad_lines='warn', encoding='ISO-8859-1' )
+        with pd.option_context('display.max_rows', None,
+                       'display.max_columns', None,
+                       'display.width', None,
+                       'display.precision', 3,
+                       'display.colheader_justify', 'left'):
+           print(ogdb)
 
 def smokingdata():
     print(cldb)
@@ -26,18 +32,15 @@ def three():
     a = cldb['Total Smokers'].sum()
     print(f"The total amount of people to ever smoke is {a} people")
 
-#need help with this 
 
 def four():
-    year_of_choice = input('Choose a year: ')
-    if year_of_choice in cldb.columns:
-        result = cldb[year_of_choice]
+    column_of_choice = input('Choose a column: ')
+    if column_of_choice in cldb.columns:
+        result = cldb[column_of_choice]
         print(result)
     else:
-        print(f"The year {year_of_choice} is not a column in the DataFrame.")
+        print(f"The column {column_of_choice} is not a column in the DataFrame.")
 
-    column_of_choice = input("Choose a column heading: ")
-    cldb.loc
 
 def five():
         cldb.plot(
@@ -62,7 +65,7 @@ def six():
 def useCases():
     global quit
 
-    print("""This UI will tell you almost everything you want to know about the trends of smoking between the eyars 1980 and 2012
+    print("""This UI will tell you almost everything you want to know about the trends of smoking between the yars 1980 and 2012
           
 
     Choose from the functions on what you'd like to learn about:
@@ -71,13 +74,13 @@ def useCases():
 
     1. Show the original dataset
     2. Show the updated Data Frame of just Australia
-    3. Show the total amount of Australian smokers from 1980 - 2012 
+    3. Show the total amount of smokers across the world from 1980 - 2012 
 
     Advanced Functions:
             
-    4. Year:(YYYY) - Show coloumn of information for just that year
-    5. Visualise_total - Visualise the total smoking trends between two genders
-    6. W male
+    4. Choose a column to display the information. You can choose from these options: Year, Average Smoked, Percent of Male, Percent of Female, Percent of Total Population, Total Smokers, Total Males, Total Females
+    5. To display the Percent of Male Smokers accross the years
+    6. To display the Percent of Female Smokers accross the years
             
     7. Quit - Quit Program
           """)
@@ -98,6 +101,7 @@ def useCases():
         elif please == 6:
             six()
         elif please == 7:
+            print("Thank you for using my User Interface goodbye :)")
             quit = True
         else:
             print("Try again, pick a number between 1-7.")
