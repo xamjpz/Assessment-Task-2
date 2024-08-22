@@ -18,11 +18,13 @@ cldb = pd.read_csv("smoking.csv",
 
 #Important Functions
 def originaldata():
-    with pd.option_context('display.max_rows', None,
+        cldb = pd.read_csv('smoking_original.csv', on_bad_lines='warn', encoding='ISO-8859-1' )
+        with pd.option_context('display.max_rows', None,
                        'display.max_columns', None,
+                       'display.width', None,
                        'display.precision', 3,
-                       ):
-        print(ogdb)
+                       'display.colheader_justify', 'left'):
+            print(cldb)
 
 def smokingdata():
     print(cldb)
